@@ -33,9 +33,10 @@ jobs:
       # 4. 推送到 Gitee (Mirror to Gitee)
       - name: Sync to Gitee
         uses: wei/git-sync@v3
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_SSH_KEY }}
         with:
           source_repo: "spmlz/multica" # 你的 GitHub 仓库地址
           source_branch: "refs/heads/main"
           destination_repo: "git@gitee.com:temiao/multica.git" # 你的 Gitee 仓库 SSH 地址
           destination_branch: "refs/heads/main"
-          destination_ssh_key: ${{ secrets.GITEE_SSH_KEY }}
