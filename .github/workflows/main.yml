@@ -1,21 +1,37 @@
-name: Sync Upstream
+name: Sync Fork and Mirror to Gitee
 on:
   schedule:
-    - cron: '0 0 * * *'  
-  workflow_dispatch:     
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
-  sync:
+  sync-upstream:
     runs-on: ubuntu-latest
+    outputs:
+      synced: ${{ steps.sync.outputs.has_new_commits }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main 
-
-      - name: Pull upstream changes
+      - name: Sync upstream
+        id: sync
         uses: wei/pull@v1
         with:
-          upstream_repository: multica-ai/multica  
-          upstream_branch: main                    
-          branch: main                             
+          upstream_repository: multica-ai/multica
+          upstream_branch: main
+          branch: main
+
+  sync-gitee:
+    needs: sync-upstream
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Sync to Gitee
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "spmlz/multica"
+          source_branch: "refs/heads/main"
+          destination_repo: "git@gitee.com:temiao/multica.git"
+          destination_branch: "refs/heads/main"
+          destination_ssh_key: ${{ secrets.GITEE_SSH_KEY }}
