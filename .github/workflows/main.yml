@@ -12,7 +12,7 @@ jobs:
       - name: Checkout your fork
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # 使用内置 Token 获取权限
+          token: ${{ secrets.MY_GITHUB_TOKEN }} # 使用内置 Token 获取权限
           fetch-depth: 0 # 必须拉取完整历史
 
       # 2. 配置 Git 用户信息
