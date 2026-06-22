@@ -1,4 +1,4 @@
-import { githubUrl } from "../components/shared";
+import { githubUrl, discordUrl } from "../components/shared";
 import { createEnDict } from "./en";
 import type { LandingDict } from "./types";
 
@@ -243,6 +243,7 @@ export function createKoDict(allowSignup: boolean): LandingDict {
             { label: "문서", href: "/docs/ko" },
             { label: "API", href: githubUrl },
             { label: "X (Twitter)", href: "https://x.com/MulticaAI" },
+            { label: "Discord", href: discordUrl },
           ],
         },
         company: {
@@ -267,6 +268,47 @@ export function createKoDict(allowSignup: boolean): LandingDict {
         fixes: "버그 수정",
       },
       entries: [
+        {
+          version: "0.3.27",
+          date: "2026-06-19",
+          title: "더 부드러운 데스크톱 사이드바와 깔끔한 고정 항목",
+          changes: [],
+          improvements: [
+            "데스크톱 사이드바가 더 부드럽게 열리고 닫히며, 자주 쓰는 탐색 컨트롤도 계속 쉽게 사용할 수 있습니다.",
+            "사이드바에 고정한 Issue는 제목 중심으로 표시되어 더 빠르게 구분할 수 있습니다.",
+            "기여자와 에이전트 작업 안내가 더 짧고 명확해져 릴리스 전 확인이 쉬워졌습니다.",
+          ],
+          fixes: [
+            "고정한 Issue와 프로젝트에서 부모 탐색 항목까지 함께 선택 표시되는 문제가 사라졌습니다.",
+            "Issue 또는 프로젝트 상세 화면에 들어가거나 저장된 레이아웃을 복원할 때 상세 사이드바가 의도치 않게 움직이지 않습니다.",
+          ],
+        },
+        {
+          version: "0.3.25",
+          date: "2026-06-18",
+          title: "스킬, 오토파일럿, 채팅 전반의 에이전트 작업 안정성 강화",
+          changes: [],
+          features: [
+            "개발자 기기의 로컬 스킬 라이브러리를 자동으로 찾아 에이전트 실행에서 더 쉽게 사용할 수 있습니다.",
+            "오토파일럿에 기본 구독자를 설정할 수 있어 새 Issue를 만들 때 필요한 팀원을 함께 포함하기 쉽습니다.",
+            "채팅 첨부 파일이 현재 워크스페이스에 연결되고, 메시지를 보내는 동안에도 대화를 계속하기 쉬워졌습니다.",
+            "실패한 에이전트 댓글을 Issue 타임라인에서 바로 다시 시도할 수 있습니다.",
+          ],
+          improvements: [
+            "같은 모델 이름이 여러 제공자에서 제공될 때도 사용량 보고가 더 정확합니다.",
+            "이전 Codex 사용 기록을 보완해 사용량 이력을 더 완전하게 만들 수 있습니다.",
+            "여러 워크스페이스 위치에 걸친 런타임 저장 공간 사용량을 더 명확하게 보여 줍니다.",
+            "백그라운드 작업 안내와 릴리스 전 검사가 더 엄격해져 위험한 변경을 더 일찍 찾을 수 있습니다.",
+          ],
+          fixes: [
+            "채팅과 댓글의 Issue 멘션 칩이 영역 안에 맞게 표시되고 주변 텍스트와 겹치지 않습니다.",
+            "워크스페이스 링크가 올바른 배포 호스트를 더 안정적으로 사용합니다.",
+            "오토파일럿 실행 폴더는 터미널 실행이 끝난 뒤 정리됩니다.",
+            "데스크톱 빌드는 커밋 기반 버전 이름을 올바르게 처리합니다.",
+            "Tencent CodeBuddy에 올바른 제공자 로고가 표시됩니다.",
+            "데몬의 작업 수신 응답이 더 작아져 전송이 빨라졌습니다.",
+          ],
+        },
         {
           version: "0.3.24",
           date: "2026-06-17",

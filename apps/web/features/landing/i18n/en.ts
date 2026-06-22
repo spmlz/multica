@@ -1,4 +1,4 @@
-import { githubUrl } from "../components/shared";
+import { githubUrl, discordUrl } from "../components/shared";
 import type { LandingDict } from "./types";
 
 export function createEnDict(allowSignup: boolean): LandingDict {
@@ -244,6 +244,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           { label: "Documentation", href: "/docs" },
           { label: "API", href: githubUrl },
           { label: "X (Twitter)", href: "https://x.com/MulticaAI" },
+          { label: "Discord", href: discordUrl },
         ],
       },
       company: {
@@ -292,6 +293,47 @@ export function createEnDict(allowSignup: boolean): LandingDict {
       fixes: "Bug Fixes",
     },
     entries: [
+      {
+        version: "0.3.27",
+        date: "2026-06-19",
+        title: "Smoother Desktop Sidebars and Cleaner Pins",
+        changes: [],
+        improvements: [
+          "Desktop sidebars now open and close more smoothly while keeping navigation controls easy to reach",
+          "Pinned Issues in the sidebar are easier to scan because labels focus on the Issue title",
+          "Contributor guidance is shorter and clearer, making agent work easier to review before release",
+        ],
+        fixes: [
+          "Pinned Issues and projects now show a single active highlight instead of lighting up their parent navigation item too",
+          "Issue and project detail sidebars no longer animate unexpectedly when entering a page or restoring a saved layout",
+        ],
+      },
+      {
+        version: "0.3.25",
+        date: "2026-06-18",
+        title: "More Reliable Agent Work Across Skills, Autopilots, and Chat",
+        changes: [],
+        features: [
+          "Local skill libraries on a developer machine can now be picked up automatically for agent runs",
+          "Autopilots can include default subscribers so the right teammates are included when new Issues are created",
+          "Chat attachments now stay tied to the current workspace and messages can continue sending without blocking the conversation",
+          "Failed agent comments can be retried directly from the Issue timeline",
+        ],
+        improvements: [
+          "Usage reporting is more accurate when the same model name is available from different providers",
+          "Older Codex usage records can be filled in for more complete usage history",
+          "Runtime storage reporting is more complete across multiple workspace locations",
+          "Background task guidance and release checks are stricter, helping catch risky changes earlier",
+        ],
+        fixes: [
+          "Issue mention chips in chat and comments now fit their container and no longer overlap nearby text",
+          "Workspace links now use the correct deployment host more reliably",
+          "Autopilot run folders are cleaned up after terminal runs finish",
+          "Desktop builds now handle commit-based version names correctly",
+          "Tencent CodeBuddy shows the correct provider logo",
+          "Daemon claim responses are smaller and faster to transfer",
+        ],
+      },
       {
         version: "0.3.24",
         date: "2026-06-17",

@@ -230,6 +230,9 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 	json.NewEncoder(w).Encode(v)
 }
 
+// writeMeasuredJSON behaves like writeJSON but returns the encoded body size so
+// callers can record payload bytes in slow-endpoint diagnostics. It measures the
+// uncompressed JSON length and is unrelated to transport compression.
 func writeMeasuredJSON(w http.ResponseWriter, status int, v any) (int, error) {
 	body, err := json.Marshal(v)
 	if err != nil {
